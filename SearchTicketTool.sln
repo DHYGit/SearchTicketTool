@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchTicketTool", "SearchTicketTool\SearchTicketTool.csproj", "{F8412E37-0F25-425E-AF9C-6917BEA1BC62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchTicket", "SearchTicketTool\SearchTicket.csproj", "{F8412E37-0F25-425E-AF9C-6917BEA1BC62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

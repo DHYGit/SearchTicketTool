@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using SearchTicketTool.ProTool;
 
 namespace SearchTicketTool
 {
@@ -25,8 +26,10 @@ namespace SearchTicketTool
         public Form1()
         {
             InitializeComponent();
+            this.httpTool = new HttpDataResponseTool();
+            
             //获取所有车站名称
-            string AllStationInfo = HttpGetFun(GetAllStationUrl);
+            string AllStationInfo = this.httpTool.HttpGetFun(GetAllStationUrl);
             string[] stationArray = AllStationInfo.Split('@');
             for (int i = 1; i < stationArray.Length; i++) 
             {
@@ -64,7 +67,7 @@ namespace SearchTicketTool
                     url += "&leftTicketDTO.to_station=" + end_enc;
                     url += "&purpose_codes=ADULT";
                     Console.WriteLine(url);
-                    this.search_result = HttpGetFun(url);
+                    this.search_result = this.httpTool.HttpGetFun(url);
                     Console.WriteLine(search_result);
                     if (search_result.Contains("data"))
                     {
@@ -80,36 +83,19 @@ namespace SearchTicketTool
                 url += "&leftTicketDTO.to_station=" + end_enc;
                 url += "&purpose_codes=ADULT";
                 Console.WriteLine(url);
-                search_result = HttpGetFun(url);
+                search_result = this.httpTool.HttpGetFun(url);
                 Console.WriteLine(search_result);
             }
-        }
-
-        string HttpGetFun(string url) 
-        {
-            string retString = "";
-            try
+            if (this.search_result.Contains("data"))
             {
-                //创建请求
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-                //GET请求
-                request.Method = "GET";
-                request.ReadWriteTimeout = 5000;
-                request.ContentType = "text/html;charset=UTF-8";
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream myResponseStream = response.GetResponseStream();
-                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
-
-                //返回内容
-                retString = myStreamReader.ReadToEnd();
-                myStreamReader.Close();
-                myResponseStream.Close();
             }
-            catch (Exception ex){
-                retString = ex.Message;
+            else {
+                MessageBox.Show("没有查到结果");
             }
-            return retString;
         }
+
+        
+
     }
 }
