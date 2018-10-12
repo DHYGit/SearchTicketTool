@@ -1,0 +1,9 @@
+E:\C#\SearchTicketTool\SearchTicketTool\bin\Debug\SearchTicketTool.exe.config
+E:\C#\SearchTicketTool\SearchTicketTool\bin\Debug\SearchTicketTool.exe
+E:\C#\SearchTicketTool\SearchTicketTool\bin\Debug\SearchTicketTool.pdb
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.csprojResolveAssemblyReference.cache
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.Form1.resources
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.Properties.Resources.resources
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.csproj.GenerateResource.Cache
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.exe
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.pdb
