@@ -97,6 +97,112 @@ namespace SearchTicketTool
             if (this.search_result.Contains("data"))
             {
                 List<TrainInfo> TrainInfoList = this.AnalysisSearchResult(this.search_result);
+                foreach(TrainInfo train_info in TrainInfoList)
+                {
+                    //动态增加一行
+                    this.tableLayoutPanel_Result.RowCount++;
+                    this.tableLayoutPanel_Result.Height = this.tableLayoutPanel_Result.RowCount * 40;
+                    this.tableLayoutPanel_Result.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40));
+                    this.tableLayoutPanel_Result.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+                    //车次
+                    Label label_TrainNum = new Label();
+                    label_TrainNum.Text = train_info.train_num;
+                    label_TrainNum.AutoSize = true;
+                    label_TrainNum.Size = this.label_TrainNum.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_TrainNum, 0, this.tableLayoutPanel_Result.RowCount - 1);
+
+                    //发站
+                    Label label_StartStation = new Label();
+                    label_StartStation.Text = train_info.start_station + "\n" + train_info.start_time;
+                    label_StartStation.AutoSize = true;
+                    label_StartStation.Size = this.label_SourceStation.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_StartStation, 1, this.tableLayoutPanel_Result.RowCount - 1);
+                    //到站
+                    Label label_DstStation = new Label();
+                    label_DstStation.Text = train_info.dst_station + "\n" + train_info.dst_time;
+                    label_DstStation.AutoSize = true;
+                    label_DstStation.Size = this.label_DstStation.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_DstStation, 2, this.tableLayoutPanel_Result.RowCount - 1);
+                    //历时
+                    Label label_SpendTime = new Label();
+                    label_SpendTime.Text = train_info.spend_time;
+                    label_SpendTime.AutoSize = true;
+                    label_SpendTime.Size = this.label_SpendTime.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_SpendTime, 3, this.tableLayoutPanel_Result.RowCount - 1);
+                    //商务座特等座
+                    Label label_BusinessClass = new Label();
+                    label_BusinessClass.Text = train_info.business_class;
+                    label_BusinessClass.AutoSize = true;
+                    label_BusinessClass.Size = this.label_BusinessClass.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_BusinessClass, 4, this.tableLayoutPanel_Result.RowCount - 1);
+                    //一等座
+                    Label label_FirstClass = new Label();
+                    label_FirstClass.Text = train_info.first_class;
+                    label_FirstClass.AutoSize = true;
+                    label_FirstClass.Size = this.label_FirstClass.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_FirstClass, 5, this.tableLayoutPanel_Result.RowCount - 1);
+                    //二等座
+                    Label label_SecondClass = new Label();
+                    label_SecondClass.Text = train_info.second_class;
+                    label_SecondClass.AutoSize = true;
+                    label_SecondClass.Size = this.label_SecondClass.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_SecondClass, 6, this.tableLayoutPanel_Result.RowCount - 1);
+                    //高级软座
+                    Label label_AdvancedSoftSleeper = new Label();
+                    label_AdvancedSoftSleeper.Text = train_info.advanced_soft_sleeper;
+                    label_AdvancedSoftSleeper.AutoSize = true;
+                    label_AdvancedSoftSleeper.Size = this.label_AdvancedSoftSleeper.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_AdvancedSoftSleeper, 7, this.tableLayoutPanel_Result.RowCount - 1);
+                    //软卧
+                    Label label_SoftSleeper = new Label();
+                    label_SoftSleeper.Text = train_info.soft_sleeper;
+                    label_SoftSleeper.AutoSize = true;
+                    label_SoftSleeper.Size = this.label_SoftSleeper.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_SoftSleeper, 8, this.tableLayoutPanel_Result.RowCount - 1);
+                    //动卧
+                    Label label_StillSleeper = new Label();
+                    label_StillSleeper.Text = train_info.still_sleeper;
+                    label_StillSleeper.AutoSize = true;
+                    label_StillSleeper.Size = this.label_StillSleeper.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_StillSleeper, 9, this.tableLayoutPanel_Result.RowCount - 1);
+                    //硬卧
+                    Label label_HardSleeper = new Label();
+                    label_HardSleeper.Text = train_info.hard_sleeper;
+                    label_HardSleeper.AutoSize = true;
+                    label_HardSleeper.Size = this.label_HardSleeper.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_HardSleeper, 10, this.tableLayoutPanel_Result.RowCount - 1);
+                    //软座
+                    Label label_SoftClass = new Label();
+                    label_SoftClass.Text = train_info.soft_class;
+                    label_SoftClass.AutoSize = true;
+                    label_SoftClass.Size = this.label_SoftClass.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_SoftClass, 11, this.tableLayoutPanel_Result.RowCount - 1);
+                    //硬座
+                    Label label_HardClass = new Label();
+                    label_HardClass.Text = train_info.hard_class;
+                    label_HardClass.AutoSize = true;
+                    label_HardClass.Size = this.label_HardClass.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_HardClass, 12, this.tableLayoutPanel_Result.RowCount - 1);
+                    //无座
+                    Label label_NoClass = new Label();
+                    label_NoClass.Text = train_info.hard_class;
+                    label_NoClass.AutoSize = true;
+                    label_NoClass.Size = this.label_NoClass.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_NoClass, 13, this.tableLayoutPanel_Result.RowCount - 1);
+                    //其他
+                    Label label_Else = new Label();
+                    label_Else.Text = train_info.others;
+                    label_Else.AutoSize = true;
+                    label_Else.Size = this.label_Else.Size;
+                    this.tableLayoutPanel_Result.Controls.Add(label_Else, 14, this.tableLayoutPanel_Result.RowCount - 1);
+                    //购票
+                    Button button = new Button();
+                    button.Text = "预订";
+                    button.BackColor = Color.Blue;
+                    button.Size = this.label_Remark.Size;
+                    button.AutoSize = true;
+                    this.tableLayoutPanel_Result.Controls.Add(button, 15, this.tableLayoutPanel_Result.RowCount - 1);
+                }
             }
             else {
                 MessageBox.Show("没有查到结果");
@@ -136,6 +242,8 @@ namespace SearchTicketTool
                         train_info.status = true;
                     }
                     train_info.date = search_result.data.result[i].Split('|')[13];
+                    train_info.advanced_soft_sleeper = search_result.data.result[i].Split('|')[21];//高级软卧
+                    train_info.still_sleeper = search_result.data.result[i].Split('|')[33];//动卧
                     train_info.business_class = search_result.data.result[i].Split('|')[32];//商务座
                     train_info.first_class = search_result.data.result[i].Split('|')[31];//一等座
                     train_info.second_class = search_result.data.result[i].Split('|')[30];//二等座
@@ -144,7 +252,7 @@ namespace SearchTicketTool
                     train_info.hard_sleeper = search_result.data.result[i].Split('|')[28];//硬卧
                     train_info.hard_class = search_result.data.result[i].Split('|')[29];//硬座
 
-
+                    TrainInfoList.Add(train_info);
 
                     //Console.WriteLine(search_result.data.result[i]);
                     Console.WriteLine("车次"+train_info.train_num + "发站:" + train_info.start_station + "到站:" + train_info.dst_station);
