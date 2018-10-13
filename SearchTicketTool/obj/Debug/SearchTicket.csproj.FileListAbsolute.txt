@@ -6,3 +6,5 @@ E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.Properties.Re
 E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicket.csproj.GenerateResource.Cache
 E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.exe
 E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.pdb
+E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicket.csprojResolveAssemblyReference.cache
+E:\C#\SearchTicketTool\SearchTicketTool\bin\Debug\Newtonsoft.Json.dll

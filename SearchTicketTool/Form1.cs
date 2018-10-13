@@ -6,10 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using SearchTicketTool.ProTool;
+using Newtonsoft.Json;
+
 
 namespace SearchTicketTool
 {
@@ -39,9 +42,14 @@ namespace SearchTicketTool
                 this.comboBox_EndStation.Items.Add(station_name);
                 this.StaionInfoDic.Add(station_name, station_enc);
             }
+            //Task task = new Task(GetAllTrainInfoFun);
+            //task.Start();
         }
-
-
+        private void GetAllTrainInfoFun() {
+            string AllTrainInfo = this.httpTool.HttpGetFun(GetAllTrainInfoUrl);
+            
+            Console.WriteLine(AllTrainInfo);
+        }
         private void button_Search_Click(object sender, EventArgs e)
         {
             if (this.comboBox_StartStation.SelectedIndex == -1) {
@@ -68,7 +76,7 @@ namespace SearchTicketTool
                     url += "&purpose_codes=ADULT";
                     Console.WriteLine(url);
                     this.search_result = this.httpTool.HttpGetFun(url);
-                    Console.WriteLine(search_result);
+                    //Console.WriteLine(search_result);
                     if (search_result.Contains("data"))
                     {
                         key = interface_array[i];
@@ -88,14 +96,62 @@ namespace SearchTicketTool
             }
             if (this.search_result.Contains("data"))
             {
-
+                List<TrainInfo> TrainInfoList = this.AnalysisSearchResult(this.search_result);
             }
             else {
                 MessageBox.Show("没有查到结果");
             }
         }
 
-        
+        private List<TrainInfo> AnalysisSearchResult(string result) {
+            List<TrainInfo> TrainInfoList = new List<TrainInfo>();
+            SearchResult search_result = JavaScriptConvert.DeserializeObject<SearchResult>(result);
+            if (search_result != null) 
+            {
+                for (int i = 0; i < search_result.data.result.Length; i++)
+                {
+                    TrainInfo train_info = new TrainInfo();
+                    train_info.train_num = search_result.data.result[i].Split('|')[3];
+                    string start_enc = search_result.data.result[i].Split('|')[6];
+                    string dst_enc = search_result.data.result[i].Split('|')[7];
+                    foreach(string key in this.StaionInfoDic.Keys)
+                    {
+                        if (this.StaionInfoDic[key] == start_enc) {
+                            train_info.start_station = key;
+                        }
+                        if (this.StaionInfoDic[key] == dst_enc) {
+                            train_info.dst_station = key;
+                        }
+                    }
+                    train_info.start_time = search_result.data.result[i].Split('|')[8];
+                    train_info.dst_time = search_result.data.result[i].Split('|')[9];
+                    train_info.spend_time = search_result.data.result[i].Split('|')[10];
+                    string status = search_result.data.result[i].Split('|')[11];
+                    if (status == "N")
+                    {
+                        train_info.status = false;
+                    }
+                    else if(status == "Y")
+                    {
+                        train_info.status = true;
+                    }
+                    train_info.date = search_result.data.result[i].Split('|')[13];
+                    train_info.business_class = search_result.data.result[i].Split('|')[32];//商务座
+                    train_info.first_class = search_result.data.result[i].Split('|')[31];//一等座
+                    train_info.second_class = search_result.data.result[i].Split('|')[30];//二等座
+                    train_info.soft_sleeper = search_result.data.result[i].Split('|')[23];//软卧
+                    train_info.no_class = search_result.data.result[i].Split('|')[26];//无座
+                    train_info.hard_sleeper = search_result.data.result[i].Split('|')[28];//硬卧
+                    train_info.hard_class = search_result.data.result[i].Split('|')[29];//硬座
+
+
+
+                    //Console.WriteLine(search_result.data.result[i]);
+                    Console.WriteLine("车次"+train_info.train_num + "发站:" + train_info.start_station + "到站:" + train_info.dst_station);
+                }
+            }
+            return TrainInfoList;
+        }
 
     }
 }
