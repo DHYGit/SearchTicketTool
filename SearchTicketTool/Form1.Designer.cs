@@ -53,6 +53,7 @@ namespace SearchTicketTool
             this.label_NoClass = new System.Windows.Forms.Label();
             this.label_Else = new System.Windows.Forms.Label();
             this.label_Remark = new System.Windows.Forms.Label();
+            this.button_Login = new System.Windows.Forms.Button();
             this.tableLayoutPanel_Result.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -327,11 +328,22 @@ namespace SearchTicketTool
             this.label_Remark.TabIndex = 1;
             this.label_Remark.Text = "购票";
             // 
+            // button_Login
+            // 
+            this.button_Login.Location = new System.Drawing.Point(769, 6);
+            this.button_Login.Name = "button_Login";
+            this.button_Login.Size = new System.Drawing.Size(83, 25);
+            this.button_Login.TabIndex = 5;
+            this.button_Login.Text = "登录";
+            this.button_Login.UseVisualStyleBackColor = true;
+            this.button_Login.Click += new System.EventHandler(this.button_Login_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 360);
+            this.Controls.Add(this.button_Login);
             this.Controls.Add(this.tableLayoutPanel_Result);
             this.Controls.Add(this.button_Search);
             this.Controls.Add(this.dateTimePicker_Date);
@@ -379,6 +391,7 @@ namespace SearchTicketTool
         private System.Windows.Forms.Label label_NoClass;
         private System.Windows.Forms.Label label_Else;
         private System.Windows.Forms.Label label_Remark;
+        private System.Windows.Forms.Button button_Login;
     }
 }
 

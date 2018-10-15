@@ -13,14 +13,14 @@ using System.IO;
 using SearchTicketTool.ProTool;
 using Newtonsoft.Json;
 
-
 namespace SearchTicketTool
 {
     public partial class Form1 : Form
     {
-        string GetAllTrainInfoUrl = "https://kyfw.12306.cn/otn/resources/js/query/train_list.js?scriptVersion=1.0";
-        string GetAllStationUrl = "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js";
-        string SearchTicketUrl = "https://kyfw.12306.cn/otn/leftTicket/query";
+        string GetCaptchaUrl = "https://kyfw.12306.cn/passport/captcha/captcha-image?login_site=E&module=login&rand=sjrand";//获取验证码接口
+        string GetAllTrainInfoUrl = "https://kyfw.12306.cn/otn/resources/js/query/train_list.js?scriptVersion=1.0";//所有的车次信息
+        string GetAllStationUrl = "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js";//所有站信息
+        string SearchTicketUrl = "https://kyfw.12306.cn/otn/leftTicket/query";//查询车票
         string key = "";
         string search_result = "";
         string[] interface_array = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
@@ -144,13 +144,16 @@ namespace SearchTicketTool
                     train_info.hard_sleeper = search_result.data.result[i].Split('|')[28];//硬卧
                     train_info.hard_class = search_result.data.result[i].Split('|')[29];//硬座
 
-
-
                     //Console.WriteLine(search_result.data.result[i]);
                     Console.WriteLine("车次"+train_info.train_num + "发站:" + train_info.start_station + "到站:" + train_info.dst_station);
                 }
             }
             return TrainInfoList;
+        }
+
+        private void button_Login_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
