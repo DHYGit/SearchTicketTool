@@ -1,7 +1,9 @@
 ﻿using SearchTicketTool.ProTool;
+using SearchTicket.Model;
+
 namespace SearchTicketTool
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -54,6 +56,8 @@ namespace SearchTicketTool
             this.label_Else = new System.Windows.Forms.Label();
             this.label_Remark = new System.Windows.Forms.Label();
             this.panel_Result = new System.Windows.Forms.Panel();
+            this.button_Login = new System.Windows.Forms.Button();
+            this.label_LogInfo = new System.Windows.Forms.Label();
             this.tableLayoutPanel_Result.SuspendLayout();
             this.panel_Result.SuspendLayout();
             this.SuspendLayout();
@@ -142,7 +146,7 @@ namespace SearchTicketTool
             this.tableLayoutPanel_Result.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel_Result.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel_Result.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel_Result.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel_Result.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel_Result.Controls.Add(this.label_TrainNum, 0, 0);
             this.tableLayoutPanel_Result.Controls.Add(this.label_SourceStation, 1, 0);
             this.tableLayoutPanel_Result.Controls.Add(this.label_DstStation, 2, 0);
@@ -162,8 +166,8 @@ namespace SearchTicketTool
             this.tableLayoutPanel_Result.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel_Result.Name = "tableLayoutPanel_Result";
             this.tableLayoutPanel_Result.RowCount = 1;
-            this.tableLayoutPanel_Result.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel_Result.Size = new System.Drawing.Size(986, 64);
+            this.tableLayoutPanel_Result.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel_Result.Size = new System.Drawing.Size(986, 43);
             this.tableLayoutPanel_Result.TabIndex = 4;
             // 
             // label_TrainNum
@@ -172,7 +176,7 @@ namespace SearchTicketTool
             this.label_TrainNum.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label_TrainNum.Location = new System.Drawing.Point(4, 1);
             this.label_TrainNum.Name = "label_TrainNum";
-            this.label_TrainNum.Size = new System.Drawing.Size(49, 20);
+            this.label_TrainNum.Size = new System.Drawing.Size(29, 40);
             this.label_TrainNum.TabIndex = 0;
             this.label_TrainNum.Text = "车次";
             // 
@@ -180,7 +184,7 @@ namespace SearchTicketTool
             // 
             this.label_SourceStation.AutoSize = true;
             this.label_SourceStation.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_SourceStation.Location = new System.Drawing.Point(60, 1);
+            this.label_SourceStation.Location = new System.Drawing.Point(55, 1);
             this.label_SourceStation.Name = "label_SourceStation";
             this.label_SourceStation.Size = new System.Drawing.Size(49, 20);
             this.label_SourceStation.TabIndex = 1;
@@ -190,7 +194,7 @@ namespace SearchTicketTool
             // 
             this.label_DstStation.AutoSize = true;
             this.label_DstStation.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_DstStation.Location = new System.Drawing.Point(130, 1);
+            this.label_DstStation.Location = new System.Drawing.Point(131, 1);
             this.label_DstStation.Name = "label_DstStation";
             this.label_DstStation.Size = new System.Drawing.Size(49, 20);
             this.label_DstStation.TabIndex = 1;
@@ -200,9 +204,9 @@ namespace SearchTicketTool
             // 
             this.label_SpendTime.AutoSize = true;
             this.label_SpendTime.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_SpendTime.Location = new System.Drawing.Point(200, 1);
+            this.label_SpendTime.Location = new System.Drawing.Point(207, 1);
             this.label_SpendTime.Name = "label_SpendTime";
-            this.label_SpendTime.Size = new System.Drawing.Size(29, 40);
+            this.label_SpendTime.Size = new System.Drawing.Size(49, 20);
             this.label_SpendTime.TabIndex = 1;
             this.label_SpendTime.Text = "历时";
             // 
@@ -210,9 +214,9 @@ namespace SearchTicketTool
             // 
             this.label_BusinessClass.AutoSize = true;
             this.label_BusinessClass.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_BusinessClass.Location = new System.Drawing.Point(248, 1);
+            this.label_BusinessClass.Location = new System.Drawing.Point(283, 1);
             this.label_BusinessClass.Name = "label_BusinessClass";
-            this.label_BusinessClass.Size = new System.Drawing.Size(49, 60);
+            this.label_BusinessClass.Size = new System.Drawing.Size(69, 40);
             this.label_BusinessClass.TabIndex = 1;
             this.label_BusinessClass.Text = "商务座特等座";
             // 
@@ -220,9 +224,9 @@ namespace SearchTicketTool
             // 
             this.label_FirstClass.AutoSize = true;
             this.label_FirstClass.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_FirstClass.Location = new System.Drawing.Point(318, 1);
+            this.label_FirstClass.Location = new System.Drawing.Point(359, 1);
             this.label_FirstClass.Name = "label_FirstClass";
-            this.label_FirstClass.Size = new System.Drawing.Size(49, 40);
+            this.label_FirstClass.Size = new System.Drawing.Size(69, 20);
             this.label_FirstClass.TabIndex = 1;
             this.label_FirstClass.Text = "一等座";
             // 
@@ -230,9 +234,9 @@ namespace SearchTicketTool
             // 
             this.label_SecondClass.AutoSize = true;
             this.label_SecondClass.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_SecondClass.Location = new System.Drawing.Point(388, 1);
+            this.label_SecondClass.Location = new System.Drawing.Point(435, 1);
             this.label_SecondClass.Name = "label_SecondClass";
-            this.label_SecondClass.Size = new System.Drawing.Size(49, 40);
+            this.label_SecondClass.Size = new System.Drawing.Size(69, 20);
             this.label_SecondClass.TabIndex = 1;
             this.label_SecondClass.Text = "二等座";
             // 
@@ -240,9 +244,9 @@ namespace SearchTicketTool
             // 
             this.label_AdvancedSoftSleeper.AutoSize = true;
             this.label_AdvancedSoftSleeper.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_AdvancedSoftSleeper.Location = new System.Drawing.Point(458, 1);
+            this.label_AdvancedSoftSleeper.Location = new System.Drawing.Point(511, 1);
             this.label_AdvancedSoftSleeper.Name = "label_AdvancedSoftSleeper";
-            this.label_AdvancedSoftSleeper.Size = new System.Drawing.Size(29, 60);
+            this.label_AdvancedSoftSleeper.Size = new System.Drawing.Size(29, 67);
             this.label_AdvancedSoftSleeper.TabIndex = 1;
             this.label_AdvancedSoftSleeper.Text = "高级软卧";
             // 
@@ -250,7 +254,7 @@ namespace SearchTicketTool
             // 
             this.label_SoftSleeper.AutoSize = true;
             this.label_SoftSleeper.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_SoftSleeper.Location = new System.Drawing.Point(506, 1);
+            this.label_SoftSleeper.Location = new System.Drawing.Point(562, 1);
             this.label_SoftSleeper.Name = "label_SoftSleeper";
             this.label_SoftSleeper.Size = new System.Drawing.Size(29, 40);
             this.label_SoftSleeper.TabIndex = 1;
@@ -260,7 +264,7 @@ namespace SearchTicketTool
             // 
             this.label_StillSleeper.AutoSize = true;
             this.label_StillSleeper.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_StillSleeper.Location = new System.Drawing.Point(554, 1);
+            this.label_StillSleeper.Location = new System.Drawing.Point(613, 1);
             this.label_StillSleeper.Name = "label_StillSleeper";
             this.label_StillSleeper.Size = new System.Drawing.Size(29, 40);
             this.label_StillSleeper.TabIndex = 1;
@@ -270,7 +274,7 @@ namespace SearchTicketTool
             // 
             this.label_HardSleeper.AutoSize = true;
             this.label_HardSleeper.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_HardSleeper.Location = new System.Drawing.Point(602, 1);
+            this.label_HardSleeper.Location = new System.Drawing.Point(664, 1);
             this.label_HardSleeper.Name = "label_HardSleeper";
             this.label_HardSleeper.Size = new System.Drawing.Size(29, 40);
             this.label_HardSleeper.TabIndex = 1;
@@ -280,7 +284,7 @@ namespace SearchTicketTool
             // 
             this.label_SoftClass.AutoSize = true;
             this.label_SoftClass.BackColor = System.Drawing.SystemColors.Control;
-            this.label_SoftClass.Location = new System.Drawing.Point(650, 1);
+            this.label_SoftClass.Location = new System.Drawing.Point(715, 1);
             this.label_SoftClass.Name = "label_SoftClass";
             this.label_SoftClass.Size = new System.Drawing.Size(29, 40);
             this.label_SoftClass.TabIndex = 1;
@@ -290,7 +294,7 @@ namespace SearchTicketTool
             // 
             this.label_HardClass.AutoSize = true;
             this.label_HardClass.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_HardClass.Location = new System.Drawing.Point(698, 1);
+            this.label_HardClass.Location = new System.Drawing.Point(766, 1);
             this.label_HardClass.Name = "label_HardClass";
             this.label_HardClass.Size = new System.Drawing.Size(29, 40);
             this.label_HardClass.TabIndex = 1;
@@ -300,7 +304,7 @@ namespace SearchTicketTool
             // 
             this.label_NoClass.AutoSize = true;
             this.label_NoClass.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_NoClass.Location = new System.Drawing.Point(746, 1);
+            this.label_NoClass.Location = new System.Drawing.Point(817, 1);
             this.label_NoClass.Name = "label_NoClass";
             this.label_NoClass.Size = new System.Drawing.Size(29, 40);
             this.label_NoClass.TabIndex = 1;
@@ -310,7 +314,7 @@ namespace SearchTicketTool
             // 
             this.label_Else.AutoSize = true;
             this.label_Else.BackColor = System.Drawing.SystemColors.Control;
-            this.label_Else.Location = new System.Drawing.Point(794, 1);
+            this.label_Else.Location = new System.Drawing.Point(868, 1);
             this.label_Else.Name = "label_Else";
             this.label_Else.Size = new System.Drawing.Size(29, 40);
             this.label_Else.TabIndex = 1;
@@ -320,7 +324,7 @@ namespace SearchTicketTool
             // 
             this.label_Remark.AutoSize = true;
             this.label_Remark.BackColor = System.Drawing.SystemColors.Control;
-            this.label_Remark.Location = new System.Drawing.Point(842, 1);
+            this.label_Remark.Location = new System.Drawing.Point(919, 1);
             this.label_Remark.Name = "label_Remark";
             this.label_Remark.Size = new System.Drawing.Size(49, 20);
             this.label_Remark.TabIndex = 1;
@@ -337,11 +341,31 @@ namespace SearchTicketTool
             this.panel_Result.Size = new System.Drawing.Size(1007, 360);
             this.panel_Result.TabIndex = 5;
             // 
-            // Form1
+            // button_Login
+            // 
+            this.button_Login.Location = new System.Drawing.Point(746, 6);
+            this.button_Login.Name = "button_Login";
+            this.button_Login.Size = new System.Drawing.Size(114, 38);
+            this.button_Login.TabIndex = 6;
+            this.button_Login.Text = "登录";
+            this.button_Login.UseVisualStyleBackColor = true;
+            this.button_Login.Click += new System.EventHandler(this.button_Login_Click);
+            // 
+            // label_LogInfo
+            // 
+            this.label_LogInfo.AutoSize = true;
+            this.label_LogInfo.Location = new System.Drawing.Point(860, 20);
+            this.label_LogInfo.Name = "label_LogInfo";
+            this.label_LogInfo.Size = new System.Drawing.Size(0, 20);
+            this.label_LogInfo.TabIndex = 7;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 471);
+            this.Controls.Add(this.label_LogInfo);
+            this.Controls.Add(this.button_Login);
             this.Controls.Add(this.panel_Result);
             this.Controls.Add(this.button_Search);
             this.Controls.Add(this.dateTimePicker_Date);
@@ -352,8 +376,9 @@ namespace SearchTicketTool
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "12306Tool";
             this.tableLayoutPanel_Result.ResumeLayout(false);
             this.tableLayoutPanel_Result.PerformLayout();
             this.panel_Result.ResumeLayout(false);
@@ -365,6 +390,9 @@ namespace SearchTicketTool
         #endregion
 
         private HttpDataResponseTool httpTool;
+        public My12306 my12306;
+        public bool login_status = false;
+        private System.Threading.Tasks.Task ListenTask;
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_StartStation;
@@ -391,6 +419,8 @@ namespace SearchTicketTool
         private System.Windows.Forms.Label label_Else;
         private System.Windows.Forms.Label label_Remark;
         private System.Windows.Forms.Panel panel_Result;
+        private System.Windows.Forms.Button button_Login;
+        public System.Windows.Forms.Label label_LogInfo;
     }
 }
 

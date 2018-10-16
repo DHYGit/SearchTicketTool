@@ -12,11 +12,11 @@ using System.Net;
 using System.IO;
 using SearchTicketTool.ProTool;
 using Newtonsoft.Json;
-
+using SearchTicket.Model;
 
 namespace SearchTicketTool
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         string GetAllTrainInfoUrl = "https://kyfw.12306.cn/otn/resources/js/query/train_list.js?scriptVersion=1.0";
         string GetAllStationUrl = "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js";
@@ -26,13 +26,14 @@ namespace SearchTicketTool
         string[] interface_array = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", 
                                        "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
         Dictionary<string, string> StaionInfoDic = new Dictionary<string, string>();
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+            this.tableLayoutPanel_Result.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tableLayoutPanel_Result, true, null);
             this.httpTool = new HttpDataResponseTool();
             
             //获取所有车站名称
-            string AllStationInfo = this.httpTool.HttpGetFun(GetAllStationUrl);
+            string AllStationInfo = this.httpTool.HttpGetFun(GetAllStationUrl);  
             string[] stationArray = AllStationInfo.Split('@');
             for (int i = 1; i < stationArray.Length; i++) 
             {
@@ -42,8 +43,34 @@ namespace SearchTicketTool
                 this.comboBox_EndStation.Items.Add(station_name);
                 this.StaionInfoDic.Add(station_name, station_enc);
             }
+            this.my12306 = new My12306();
+            this.ListenTask = new Task(ListenFun);
+            this.ListenTask.Start();
             //Task task = new Task(GetAllTrainInfoFun);
             //task.Start();
+        }
+        private void ListenFun() 
+        {
+            while (true) {
+                if (this.login_status == false && this.button_Login.Text == "退出") {
+                    if (this.button_Login.InvokeRequired) {
+                        this.button_Login.BeginInvoke(new EventHandler(delegate {
+                            this.button_Login.Text = "登录";
+                        }));
+                    }
+                }
+                if (this.login_status == true && this.button_Login.Text == "登录")
+                {
+                    if (this.button_Login.InvokeRequired)
+                    {
+                        this.button_Login.BeginInvoke(new EventHandler(delegate
+                        {
+                            this.button_Login.Text = "退出";
+                        }));
+                    }
+                }
+                Thread.Sleep(1000);
+            }
         }
         private void GetAllTrainInfoFun() {
             string AllTrainInfo = this.httpTool.HttpGetFun(GetAllTrainInfoUrl);
@@ -52,6 +79,10 @@ namespace SearchTicketTool
         }
         private void button_Search_Click(object sender, EventArgs e)
         {
+            if (this.login_status == false) {
+                MessageBox.Show("请先登录");
+                return;
+            }
             if (this.comboBox_StartStation.SelectedIndex == -1) {
                 MessageBox.Show("请选择始发站");
                 return;
@@ -211,7 +242,7 @@ namespace SearchTicketTool
 
         private List<TrainInfo> AnalysisSearchResult(string result) {
             List<TrainInfo> TrainInfoList = new List<TrainInfo>();
-            SearchResult search_result = JavaScriptConvert.DeserializeObject<SearchResult>(result);
+            SearchResult search_result = JsonConvert.DeserializeObject<SearchResult>(result);
             if (search_result != null) 
             {
                 for (int i = 0; i < search_result.data.result.Length; i++)
@@ -260,6 +291,44 @@ namespace SearchTicketTool
             }
             return TrainInfoList;
         }
+
+        private void button_Login_Click(object sender, EventArgs e)
+        {
+            if (this.button_Login.Text == "登录")
+            {
+                Login login = new Login();
+                login.main_form = this;
+                this.IsEnableForm(false);
+                login.Show();
+            }
+            else {
+                this.label_LogInfo.Text = "";
+                this.login_status = false;
+            }
+        }
+
+        public void IsEnableForm(bool flag)
+        {
+            if (flag == false)
+            {//disable
+                this.button_Login.Enabled = false;
+                this.button_Search.Enabled = false;
+                this.dateTimePicker_Date.Enabled = false;
+                this.comboBox_StartStation.Enabled = false;
+                this.comboBox_EndStation.Enabled = false;
+                this.panel_Result.Enabled = false;
+            }
+            else {
+                this.button_Login.Enabled = true;
+                this.button_Search.Enabled = true;
+                this.dateTimePicker_Date.Enabled = true;
+                this.comboBox_StartStation.Enabled = true;
+                this.comboBox_EndStation.Enabled = true;
+                this.panel_Result.Enabled = true;
+            }
+        }
+
+       
 
     }
 }
