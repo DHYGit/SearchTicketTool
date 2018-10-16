@@ -55,9 +55,16 @@ namespace SearchTicketTool
             this.label_NoClass = new System.Windows.Forms.Label();
             this.label_Else = new System.Windows.Forms.Label();
             this.label_Remark = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.button_Login = new System.Windows.Forms.Button();
+=======
             this.panel_Result = new System.Windows.Forms.Panel();
+<<<<<<< HEAD:SearchTicketTool/MainForm.Designer.cs
             this.button_Login = new System.Windows.Forms.Button();
             this.label_LogInfo = new System.Windows.Forms.Label();
+=======
+>>>>>>> bb7f427ff44575633dcb7139f72565c94671d80c
+>>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a:SearchTicketTool/Form1.Designer.cs
             this.tableLayoutPanel_Result.SuspendLayout();
             this.panel_Result.SuspendLayout();
             this.SuspendLayout();
@@ -343,14 +350,22 @@ namespace SearchTicketTool
             // 
             // button_Login
             // 
+<<<<<<< HEAD:SearchTicketTool/MainForm.Designer.cs
             this.button_Login.Location = new System.Drawing.Point(746, 6);
             this.button_Login.Name = "button_Login";
             this.button_Login.Size = new System.Drawing.Size(114, 38);
             this.button_Login.TabIndex = 6;
+=======
+            this.button_Login.Location = new System.Drawing.Point(769, 6);
+            this.button_Login.Name = "button_Login";
+            this.button_Login.Size = new System.Drawing.Size(83, 25);
+            this.button_Login.TabIndex = 5;
+>>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a:SearchTicketTool/Form1.Designer.cs
             this.button_Login.Text = "登录";
             this.button_Login.UseVisualStyleBackColor = true;
             this.button_Login.Click += new System.EventHandler(this.button_Login_Click);
             // 
+<<<<<<< HEAD:SearchTicketTool/MainForm.Designer.cs
             // label_LogInfo
             // 
             this.label_LogInfo.AutoSize = true;
@@ -360,13 +375,22 @@ namespace SearchTicketTool
             this.label_LogInfo.TabIndex = 7;
             // 
             // MainForm
+=======
+            // Form1
+>>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a:SearchTicketTool/Form1.Designer.cs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(926, 360);
+            this.Controls.Add(this.button_Login);
+            this.Controls.Add(this.tableLayoutPanel_Result);
+=======
             this.ClientSize = new System.Drawing.Size(1026, 471);
             this.Controls.Add(this.label_LogInfo);
             this.Controls.Add(this.button_Login);
             this.Controls.Add(this.panel_Result);
+>>>>>>> bb7f427ff44575633dcb7139f72565c94671d80c
             this.Controls.Add(this.button_Search);
             this.Controls.Add(this.dateTimePicker_Date);
             this.Controls.Add(this.comboBox_EndStation);
@@ -418,9 +442,16 @@ namespace SearchTicketTool
         private System.Windows.Forms.Label label_NoClass;
         private System.Windows.Forms.Label label_Else;
         private System.Windows.Forms.Label label_Remark;
+<<<<<<< HEAD
+        private System.Windows.Forms.Button button_Login;
+=======
         private System.Windows.Forms.Panel panel_Result;
+<<<<<<< HEAD:SearchTicketTool/MainForm.Designer.cs
         private System.Windows.Forms.Button button_Login;
         public System.Windows.Forms.Label label_LogInfo;
+=======
+>>>>>>> bb7f427ff44575633dcb7139f72565c94671d80c
+>>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a:SearchTicketTool/Form1.Designer.cs
     }
 }
 
