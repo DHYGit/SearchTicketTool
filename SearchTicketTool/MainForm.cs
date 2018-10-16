@@ -12,10 +12,7 @@ using System.Net;
 using System.IO;
 using SearchTicketTool.ProTool;
 using Newtonsoft.Json;
-<<<<<<< HEAD:SearchTicketTool/MainForm.cs
 using SearchTicket.Model;
-=======
->>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a:SearchTicketTool/Form1.cs
 
 namespace SearchTicketTool
 {
@@ -286,13 +283,7 @@ namespace SearchTicketTool
                     train_info.no_class = search_result.data.result[i].Split('|')[26];//无座
                     train_info.hard_sleeper = search_result.data.result[i].Split('|')[28];//硬卧
                     train_info.hard_class = search_result.data.result[i].Split('|')[29];//硬座
-
-<<<<<<< HEAD
-=======
                     TrainInfoList.Add(train_info);
-
->>>>>>> bb7f427ff44575633dcb7139f72565c94671d80c
-                    //Console.WriteLine(search_result.data.result[i]);
                     Console.WriteLine("车次"+train_info.train_num + "发站:" + train_info.start_station + "到站:" + train_info.dst_station);
                 }
             }
@@ -301,7 +292,6 @@ namespace SearchTicketTool
 
         private void button_Login_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD:SearchTicketTool/MainForm.cs
             if (this.button_Login.Text == "登录")
             {
                 Login login = new Login();
@@ -335,13 +325,6 @@ namespace SearchTicketTool
                 this.panel_Result.Enabled = true;
             }
         }
-
-       
-
-=======
-
-        }
-
->>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a:SearchTicketTool/Form1.cs
+        
     }
 }

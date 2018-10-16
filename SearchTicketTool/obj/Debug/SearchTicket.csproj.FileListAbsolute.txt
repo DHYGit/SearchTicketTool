@@ -9,3 +9,13 @@ E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicket.csprojResolveAsse
 E:\C#\SearchTicketTool\SearchTicketTool\bin\Debug\Newtonsoft.Json.dll
 E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.Login.resources
 E:\C#\SearchTicketTool\SearchTicketTool\obj\Debug\SearchTicketTool.MainForm.resources
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\bin\Debug\SearchTicketTool.exe.config
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\bin\Debug\SearchTicketTool.exe
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\bin\Debug\SearchTicketTool.pdb
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\bin\Debug\Newtonsoft.Json.dll
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\obj\Debug\SearchTicketTool.MainForm.resources
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\obj\Debug\SearchTicketTool.Login.resources
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\obj\Debug\SearchTicketTool.Properties.Resources.resources
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\obj\Debug\SearchTicket.csproj.GenerateResource.Cache
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\obj\Debug\SearchTicketTool.exe
+E:\C#\SearchTicketTool - 副本\SearchTicketTool\obj\Debug\SearchTicketTool.pdb

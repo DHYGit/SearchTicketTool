@@ -7,18 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
+
 using SearchTicketTool.ProTool;
 using SearchTicket.Model;
 using Newtonsoft.Json;
-=======
->>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a
+
 
 namespace SearchTicketTool
 {
     public partial class Login : Form
     {
-<<<<<<< HEAD
+
         public MainForm main_form;
         
         private HttpHelper http = new HttpHelper();
@@ -296,14 +295,10 @@ namespace SearchTicketTool
             {
                 this.textBox_Password.PasswordChar = new char();
             }
-            else { 
+            else
+            {
                 this.textBox_Password.PasswordChar = '*';
             }
-=======
-        public Login()
-        {
-            InitializeComponent();
->>>>>>> bb0db9e839499adfba5590fe2e62e96ae5d4cd9a
         }
     }
 }
