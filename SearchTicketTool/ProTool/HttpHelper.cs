@@ -15,50 +15,33 @@ namespace SearchTicketTool.ProTool
 {
     public class ResponseModel
     {
-        private WebHeaderCollection header;
         /// <summary>
         /// 返回的头部信息集合
         /// </summary>
-        public WebHeaderCollection Header
-        {
-            get { return header; }
-            set { header = value; }
-        }
-        private string html;
+        public WebHeaderCollection Header;
+
         /// <summary>
         /// 返回的文本内容
         /// </summary>
-        public string Html
-        {
-            get { return html; }
-            set { html = value; }
-        }
-        private Stream stream;
+        public string Html;
+        
         /// <summary>
         /// 返回的流内容
         /// </summary>
-        public Stream Stream
-        {
-            get { return stream; }
-            set { stream = value; }
-        }
-
+        public Stream Stream;
     }
     public class HttpHelper
     {
         private string accept = "application/json,text/javascript,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
         private System.Net.CookieContainer cc = new System.Net.CookieContainer();
         private string contentType = "application/x-www-form-urlencoded";
-
         private int timeOut = 30000;
         public NameValueCollection Heads = new NameValueCollection();
         private bool AllowAutoRedirect = false;
         bool needReset = false;
         private System.Text.Encoding encoding = System.Text.Encoding.GetEncoding("utf-8");
-
         public IWebProxy Proxy;
-        private string[] userAgents = new string[] { "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)", "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36 SE 2.X MetaSr 1.0" };
-
+        private string[] userAgents = new string[] {"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)", "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36 SE 2.X MetaSr 1.0" };
         private string userAgent
         {
             get
@@ -66,8 +49,6 @@ namespace SearchTicketTool.ProTool
                 return this.userAgents[new Random().Next(0, this.userAgents.Length)];
             }
         }
-
-
         /// <summary>
         /// 设置下一次请求为自动重定向
         /// </summary>
@@ -77,7 +58,6 @@ namespace SearchTicketTool.ProTool
             AllowAutoRedirect = value;
             needReset = true;
         }
-
         /// <summary>
         /// 网页访问
         /// </summary>
@@ -101,14 +81,9 @@ namespace SearchTicketTool.ProTool
             {
                 return GetHtml(url, refurl, cookieContainer, _contentType, headers, retType);
             }
-
-
             ResponseModel model = new ResponseModel();
-
             ServicePointManager.Expect100Continue = true;
-
             ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
-
             HttpWebRequest request = null;
             HttpWebResponse response = null;
             try
@@ -135,12 +110,9 @@ namespace SearchTicketTool.ProTool
                 {
                     request.Referer = refurl;
                 }
-
-
                 request.AllowAutoRedirect = AllowAutoRedirect;
                 request.Accept = this.accept;
                 request.UserAgent = this.userAgent;
-
                 if (headers != null)
                 {
                     request.Headers.Add(Heads);
@@ -150,17 +122,11 @@ namespace SearchTicketTool.ProTool
                 {
                     request.Headers.Add(Heads);
                 }
-
-
                 request.Method = isPost ? "POST" : "GET";
                 request.ContentLength = bytes.Length;
-
-
                 Stream requestStream = request.GetRequestStream();
                 requestStream.Write(bytes, 0, bytes.Length);
                 requestStream.Close();
-
-
                 if (retType == 1)
                 {
                     response = (HttpWebResponse)request.GetResponse();

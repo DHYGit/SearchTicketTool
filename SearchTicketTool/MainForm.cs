@@ -250,8 +250,8 @@ namespace SearchTicketTool
                 {
                     TrainInfo train_info = new TrainInfo();
                     train_info.train_num = search_result.data.result[i].Split('|')[3];
-                    string start_enc = search_result.data.result[i].Split('|')[6];
-                    string dst_enc = search_result.data.result[i].Split('|')[7];
+                    string start_enc = search_result.data.result[i].Split('|')[6];//始发站
+                    string dst_enc = search_result.data.result[i].Split('|')[7];//到站
                     foreach(string key in this.StaionInfoDic.Keys)
                     {
                         if (this.StaionInfoDic[key] == start_enc) {
@@ -261,9 +261,9 @@ namespace SearchTicketTool
                             train_info.dst_station = key;
                         }
                     }
-                    train_info.start_time = search_result.data.result[i].Split('|')[8];
-                    train_info.dst_time = search_result.data.result[i].Split('|')[9];
-                    train_info.spend_time = search_result.data.result[i].Split('|')[10];
+                    train_info.start_time = search_result.data.result[i].Split('|')[8];//起始时间
+                    train_info.dst_time = search_result.data.result[i].Split('|')[9];//到站时间
+                    train_info.spend_time = search_result.data.result[i].Split('|')[10];//历时
                     string status = search_result.data.result[i].Split('|')[11];
                     if (status == "N")
                     {
@@ -273,8 +273,9 @@ namespace SearchTicketTool
                     {
                         train_info.status = true;
                     }
-                    train_info.date = search_result.data.result[i].Split('|')[13];
+                    train_info.date = search_result.data.result[i].Split('|')[13];//日期
                     train_info.advanced_soft_sleeper = search_result.data.result[i].Split('|')[21];//高级软卧
+                    train_info.soft_class = search_result.data.result[i].Split('|')[24];//软座
                     train_info.still_sleeper = search_result.data.result[i].Split('|')[33];//动卧
                     train_info.business_class = search_result.data.result[i].Split('|')[32];//商务座
                     train_info.first_class = search_result.data.result[i].Split('|')[31];//一等座

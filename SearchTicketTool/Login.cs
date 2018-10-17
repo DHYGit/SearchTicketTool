@@ -102,6 +102,7 @@ namespace SearchTicketTool
                         //登录成功! 
                         this.main_form.login_status = true;
                         ResponseModel respone_my = http.HttpVisit(my_12306);
+                        
                         string[] responseArray = respone_my.Html.Split('\n');
                         
                         foreach (string str in responseArray) {
@@ -225,6 +226,7 @@ namespace SearchTicketTool
                             }
                             if (str.Contains("好！"))//时间状态信息
                             {
+                                Console.WriteLine(str);
                                 this.main_form.my12306.TimeInfo = str.Split('<')[0];
                             }
                         }
